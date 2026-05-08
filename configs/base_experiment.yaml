@@ -1,0 +1,51 @@
+experiment_name: "base_multistep"
+dataset_path: "data/processed/asqa_eval_top20.jsonl"
+output_dir: "outputs/runs/base_multistep"
+
+runtime:
+  random_seed: 42
+  limit: 0
+  save_intermediate: true
+
+retrieval:
+  doc_topk: 6
+  sentence_topk: 12
+  sentence_context_window: 1
+  use_summary: true
+  use_extraction: true
+  title_boost: 0.25
+  summary_boost: 0.2
+  extraction_boost: 0.15
+
+filter:
+  mode: "nli"
+  keep_topk: 8
+  min_overlap: 1
+  threshold: 0.55
+
+extract:
+  mode: "facts"
+  max_items: 8
+  deduplicate: true
+
+generation:
+  use_llm: true
+  model_key: "generator_model"
+  override_model_path: ""
+  max_new_tokens: 320
+  temperature: 0.0
+  cite_mode: "numeric"
+
+reflection:
+  mode: "nli"
+  sentence_level: true
+  threshold: 0.55
+  max_fix_sentences: 3
+  verifier_model_key: "nli_model"
+
+evaluation:
+  rouge: true
+  citation: true
+  claims_nli: true
+  at_most_citations: 3
+  nli_model_key: "nli_model"
