@@ -1,0 +1,63 @@
+processed_dir: "data/processed"
+base_output_dir: "outputs/models"
+
+datasets:
+  - "asqa_eval_top20.jsonl"
+  - "eli5_eval_top20.jsonl"
+  - "qampari_eval_top20.jsonl"
+
+experiments:
+  #- name: "exp01_direct_llama"
+  #  retrieval.doc_topk: 5
+  #  retrieval.sentence_topk: 0
+  #  filter.mode: "none"
+  #  extract.mode: "none"
+  #  reflection.mode: "none"
+  #  generation.model_key: "generator_model"
+
+  - name: "exp02_direct_qwen"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 0
+    filter.mode: "none"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "alt_generator_model"
+
+  - name: "exp03_direct_mistral"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 0
+    filter.mode: "none"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "third_generator_model"
+  
+  #- name: "exp04_model_ablation_llama"
+  #  retrieval.doc_topk: 5
+  #  retrieval.sentence_topk: 12
+  #  filter.mode: "nli"
+  #  extract.mode: "facts"
+  #  reflection.mode: "nli"
+  #  generation.model_key: "generator_model"
+
+  - name: "exp05_model_ablation_qwen"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "nli"
+    generation.model_key: "alt_generator_model"
+
+  - name: "exp06_model_ablation_mistral"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "nli"
+    generation.model_key: "third_generator_model" 
+  
+
+  
+
+  
+
+  

@@ -1,0 +1,100 @@
+processed_dir: "data/processed"
+base_output_dir: "outputs/run400"
+
+datasets:
+  - "asqa_eval_top20.jsonl"
+  - "eli5_eval_top20.jsonl"
+  - "qampari_eval_top20.jsonl"
+
+# Main ablation experiments.
+
+experiments:
+  - name: "exp01_direct_llama"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 0
+    filter.mode: "none"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "generator_model"
+  
+  - name: "exp01_direct_qwen"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 0
+    filter.mode: "none"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "alt_generator_model"
+  
+  - name: "exp01_direct_mistral"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 0
+    filter.mode: "none"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "third_generator_model"
+  
+  - name: "exp02_sent_rerank"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "none"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "generator_model"
+
+  - name: "exp03_overlap_filter"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "overlap"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "generator_model"
+
+  - name: "exp04_nli_filter"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "none"
+    reflection.mode: "none"
+    generation.model_key: "generator_model"
+  
+  - name: "exp05_fact_extract"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "none"
+    generation.model_key: "generator_model"
+  
+  - name: "exp06_reflect_rule"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "rule"
+    generation.model_key: "generator_model"
+
+  - name: "exp07_reflect_nli"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "nli"
+    generation.model_key: "generator_model"
+
+  - name: "exp07_reflect_nli_qwen"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "nli"
+    generation.model_key: "alt_generator_model"
+    
+
+  - name: "exp07_reflect_nli_mistral"
+    retrieval.doc_topk: 5
+    retrieval.sentence_topk: 12
+    filter.mode: "nli"
+    extract.mode: "facts"
+    reflection.mode: "nli"
+    generation.model_key: "third_generator_model"
+    

@@ -1,0 +1,18 @@
+# 模型路径配置
+# 请复制此文件为 model_paths.yaml 并修改为实际路径
+
+# 主生成模型 (默认使用 Llama2-7B)
+generator_model: "/data/llama2-7b-hf"
+
+# 备选生成模型
+alt_generator_model: "/data/Qwen2.5-7B"
+third_generator_model: "/data/Mistral-7B-v0.1"
+#sft微调模型
+qwen_lora_model: "/data/coding/Multi_Step_RAG/outputs/sft/qwen_reflect_lora/final_model"
+# NLI/反思模型
+nli_model: "/data/MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+# 运行时配置
+device: "cuda"
+generator_dtype: "bfloat16"
+nli_dtype: "bfloat16"
+max_new_tokens: 384
